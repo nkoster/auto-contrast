@@ -16,15 +16,15 @@ function getRandomColor() {
     const
         shadow = 0.8,
         red = Math.round(Math.random() * 255),
-        darkRed = Math.round(red * shadow)
+        shadowRed = Math.round(red * shadow)
         green = Math.round(Math.random() * 255),
-        darkGreen = Math.round(green * shadow)
+        shadowGreen = Math.round(green * shadow)
         blue = Math.round(Math.random() * 255),
-        darkBlue = Math.round(blue * shadow)
+        shadowBlue = Math.round(blue * shadow)
         o = Math.round(((red * 299) + (green * 587) + (blue * 114)) / 1000),
         fg = (o > 125) ? 'black' : 'white',
         bg = `rgb(${red},${green},${blue})`
-        sh = `rgb(${darkRed},${darkGreen},${darkBlue})`
+        sh = `rgb(${shadowRed},${shadowGreen},${shadowBlue})`
     return { fg, bg, sh }
 }
 
