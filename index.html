@@ -14,13 +14,18 @@
 
 function getRandomColor() {
     const
+        shadow = 0.8,
         red = Math.round(Math.random() * 255),
+        darkRed = Math.round(red * shadow)
         green = Math.round(Math.random() * 255),
+        darkGreen = Math.round(green * shadow)
         blue = Math.round(Math.random() * 255),
+        darkBlue = Math.round(blue * shadow)
         o = Math.round(((red * 299) + (green * 587) + (blue * 114)) / 1000),
         fg = (o > 125) ? 'black' : 'white',
         bg = `rgb(${red},${green},${blue})`
-    return { fg, bg }
+        sh = `rgb(${darkRed},${darkGreen},${darkBlue})`
+    return { fg, bg, sh }
 }
 
 const body = document.getElementsByTagName('body')[0]
@@ -38,7 +43,7 @@ for (let n = 0; n < 20; n++) {
     div.style.textAlign = 'center'
     div.style.fontFamily = 'Arial'
     div.style.fontWeight = 'bold'
-    div.style.borderBottom = `dashed 2px white`
+    div.style.borderBottom = `dashed 4px ${c.sh}`
     div.innerHTML =
         `<span class="middle">This is background color ${c.bg} with foreground color ${c.fg}</span>`
     body.appendChild(div)
