@@ -3,6 +3,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Colors</title>
+<style>
+.middle {
+    margin-top: 50%;
+}
+</style>
 </head>
 <body>
     <script>
@@ -25,10 +30,17 @@ for (let n = 0; n < 20; n++) {
     const
         div = document.createElement('div'),
         c = getRandomColor()
-    div.style.height = '75px'
+        height = '100px'
+    div.style.height = height
+    div.style.lineHeight = height
     div.style.background = c.bg
     div.style.color = c.fg
-    div.innerHTML = `This is background color ${c.bg} with foreground color ${c.fg}`
+    div.style.textAlign = 'center'
+    div.style.fontFamily = 'Arial'
+    div.style.fontWeight = 'bold'
+    div.style.borderBottom = `dotted 1px white`
+    div.innerHTML =
+        `<span class="middle">This is background color ${c.bg} with foreground color ${c.fg}</span>`
     body.appendChild(div)
 }
 
