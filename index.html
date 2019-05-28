@@ -21,11 +21,11 @@ function getRandomColor() {
         shadowGreen = Math.round(green * shadow)
         blue = Math.round(Math.random() * 255),
         shadowBlue = Math.round(blue * shadow)
-        o = Math.round(((red * 299) + (green * 587) + (blue * 114)) / 1000),
-        fg = (o > 125) ? 'black' : 'white',
+        t = Math.round(((red * 299) + (green * 587) + (blue * 114)) / 1000),
+        fg = (t > 135) ? 'black' : 'white', // basic 125
         bg = `rgb(${red},${green},${blue})`
         sh = `rgb(${shadowRed},${shadowGreen},${shadowBlue})`
-    return { fg, bg, sh }
+    return { fg, bg, sh, t }
 }
 
 const body = document.getElementsByTagName('body')[0]
@@ -41,11 +41,12 @@ for (let n = 0; n < 20; n++) {
     div.style.background = c.bg
     div.style.color = c.fg
     div.style.textAlign = 'center'
-    div.style.fontFamily = 'Arial'
+    div.style.fontFamily = 'sans-serif,Arial,Helvetica'
     div.style.fontWeight = 'bold'
-    div.style.borderBottom = `dashed 4px ${c.sh}`
+    div.style.fontSize = '20px'
+    div.style.borderBottom = `dashed 10px ${c.sh}`
     div.innerHTML =
-        `<span class="middle">This is background color ${c.bg} with foreground color ${c.fg}</span>`
+        `<span class="middle">This is background color ${c.bg} (L=${c.t})</span>`
     body.appendChild(div)
 }
 
